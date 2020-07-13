@@ -19,7 +19,7 @@ class Log
      */
     private static function buildLogDirFullPathByDomain($domain)
     {
-        return $_SERVER['DOCUMENT_ROOT'] . '/bitrix24/chat_bot_transmitter/logs/' . $domain . '/';
+        return $_SERVER['DOCUMENT_ROOT'] . '/chat_bot_transmitter/logs/' . $domain . '/';
     }
 
     /**
@@ -52,7 +52,7 @@ class Log
 
         try {
             if (!file_exists(Log::buildLogDirFullPathByDomain($domain))) {
-                mkdir(Log::buildLogDirFullPathByDomain($domain));
+                mkdir(Log::buildLogDirFullPathByDomain($domain), 0777, true);
             }
             $fp = fopen(Log::buildLogFileFullPathByDomain($domain), $mode);
             fwrite($fp, $message);
